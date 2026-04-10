@@ -1,7 +1,6 @@
 import crypto from 'node:crypto';
 import path from 'node:path';
 import { homedir } from 'node:os';
-import { fileURLToPath } from 'node:url';
 import {
   DaemonRpcServer,
   getSocketPath,
@@ -29,7 +28,7 @@ import { WhatsAppDaemonService } from './whatsapp-service.js';
 import { WhatsAppSendApi } from './whatsapp/whatsapp-send-api.js';
 import { log } from './logger.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// __dirname is available natively in CJS (the daemon is built as CJS by tsup)
 
 const DRAIN_TIMEOUT_MS = 30_000;
 let pidLock: PidLockHandle | null = null;
